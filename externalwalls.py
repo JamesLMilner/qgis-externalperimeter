@@ -1,4 +1,4 @@
-##building_input=vector
+##Buildings=vector
 
 from qgis.core import *
 from PyQt4.QtCore import *
