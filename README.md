@@ -12,6 +12,10 @@ This QGIS script will determine the external facing perimeter of buildings. It a
     6. Open script
     7. Select your building dataset
     8. Run!
+    9. Right click on the layer in the 'Layers Panel' (left hand side)
+    10. Select open attribute table
+    11. See the 'ext_peri' field for results
+
 
 ## Compatibility
 
