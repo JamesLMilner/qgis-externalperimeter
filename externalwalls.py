@@ -11,17 +11,19 @@ FIELD_NAME = 'ext_peri'
 def floatClose(f1, f2, allowed_error):
     return abs(f1 - f2) <= allowed_error
 
-# Add a new attribute called 'external_perimeter' to the layer
-building_layer = processing.getObject(building_input)
+building_layer = processing.getObject(Buildings)
 provider = building_layer.dataProvider()
-provider.addAttributes([QgsField(FIELD_NAME, QVariant.Double)])
-building_layer.updateFields()
+
+# Add a new attribute called 'external_perimeter' to the layer
+if building_layer.fieldNameIndex(FIELD_NAME) == -1:
+    provider.addAttributes([QgsField(FIELD_NAME, QVariant.Double)])
+    building_layer.updateFields()
 
 # Open up the external_perimeter for editing
 building_layer.startEditing()
 building_layer_index = building_layer.fieldNameIndex(FIELD_NAME)
 
-## Iterate through each of the buildings
+# Iterate through each of the buildings
 for main in building_layer.getFeatures():
     try:
         main_geom = main.geometry()
